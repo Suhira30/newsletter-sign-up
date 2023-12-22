@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- displays site properly based on user's device -->
+
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="./assets/images/favicon-32x32.png"
+    />
+    <link rel="stylesheet" href="index.css" />
+
+    <title>
+      Frontend Mentor | Newsletter sign-up form with success message
+    </title>
+
+    <!-- Feel free to remove these styles or customise in your own stylesheet 👍 -->
+    <!-- <style>
+      .attribution {
+        font-size: 11px;
+        text-align: center;
+      }
+      .attribution a {
+        color: hsl(228, 45%, 44%);
+      }
+    </style>-->
+
+    <!-- Sign-up form start -->
+    <!-- 
+    Stay updated! Join 60,000+ product managers receiving monthly updates on:
+    Product discovery and building what matters Measuring to ensure updates are
+    a success And much more! Email address email@company.com Subscribe to
+    monthly newsletter
+-->
+    <!-- Sign-up form end -->
+
+    <!-- Success message start -->
+
+    <!--
+    Thanks for subscribing! A confirmation email has been sent to
+    ash@loremcompany.com. Please open it and click the button inside to confirm
+    your subscription. Dismiss message
+  -->
+    <!-- Success message end -->
+
+    <!--
+    <div class="attribution">
+      Challenge by
+      <a href="https://www.frontendmentor.io?ref=challenge" target="_blank"
+        >Frontend Mentor</a
+      >. Coded by <a href="#">Your Name Here</a>.
+    </div>-->
+  </head>
+  <body>
+    <main>
+      <div class="divcontainer">
+        <div class="divchild1">
+          <div class="innerdiv">
+            <h2 class="heading">Stay updated!</h2>
+            <p class="para">
+              Join 60,000+ product managers receiving monthly updates on:
+            </p>
+
+            <ul>
+              <li>Product discovery and building what matters</li>
+              <li>Measuring to ensure</li>
+              <li>updates are a success And much more!</li>
+            </ul>
+            <br />
+            <lable id="addr"> Email address </lable>
+            <span id="error">Valid email requid</span>
+            <input
+              class="mailid"
+              type="email"
+              id="email"
+              placeholder="email@company.com"
+            />
+            <button type="submit" class="btn" onclick="validateAndPopup()">
+              Subscribe to monthly newsletter
+            </button>
+          </div>
+        </div>
+
+        <div class="divchild2">
+          <img
+            id="appImage"
+            src="assets/images/illustration-sign-up-desktop.svg"
+          />
+        </div>
+      </div>
+      <!------------------------------------------------------------------------------>
+      <script>
+        function validateAndPopup() {
+          var email = document.getElementById("email").value;
+          var emailError = document.getElementById("error");
+          var pattern =
+            /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
+
+          if (pattern.test(email)) {
+            document.getElementById("emailadd").textContent = email;
+            popupOpen();
+          } else {
+            emailError.style.display = "inline-block";
+            document.getElementById("error").style.color = "red";
+            document.getElementById("email").style.backgroundColor =
+              "rgba(255, 0, 0, 0.2)";
+            document.getElementById("email").style.color = "red";
+
+            return false;
+          }
+        }
+
+        function popupOpen() {
+          let popup = document.getElementById("popup");
+          popup.classList.add("open-popup");
+        }
+
+        function popupClose() {
+          let popup = document.getElementById("popup");
+          popup.classList.remove("open-popup");
+        }
+      </script>
+
+      <!--------------------------------------------------------------------->
+      <div class="popup" id="popup">
+        <img src="assets/images/icon-success.svg" />
+        <h2 class="thanks">Thanks for subscribing!</h2>
+        <p>
+          A confirmation email has been sent to
+          <strong><span id="emailadd"></span></strong>
+          . Please open it and click the button inside to confirm your
+          subscription. Dismiss message
+        </p>
+        <button type="button" onclick="popupClose()">Dismiss message</button>
+      </div>
+    </main>
+  </body>
+</html>
